@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+.env
+.env.*
+
+# Node / frontend
+node_modules/
+dashboard/dist/
+dist/
+dist-ssr/
+*.local
+
+# Runtime / generated analysis
+data/jobs/
+data/*.db
+output/
+diag_output/
+
+# Training datasets (large image corpora)
+**/dataset/
+
+# Videos & media artifacts
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Duplicate / checkpoint weights (keep named production .pt files)
+**/last.pt
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.sw?
+*.log

@@ -1,0 +1,36 @@
+# ByteTrack configuration tuned for football match footage.
+#
+# ByteTrack (https://arxiv.org/abs/2110.06864) is a motion-only tracker: it
+# associates BOTH high- and low-confidence detections against a Kalman motion
+# model. That two-stage association is what lets it keep an ID through brief
+# occlusions (a player crossing behind another) and re-attach a reappearing
+# object to its existing ID - all without any appearance/ReID model, which
+# keeps it fast enough for real-time use.
+
+tracker_type: bytetrack
+
+# High-confidence detections used for the first association pass. Kept modest
+# so confidently-detected players/referees are matched first.
+track_high_thresh: 0.30
+
+# Low-confidence detections rescued in the second association pass. This is
+# the key to occlusion handling: partially-hidden players often drop to low
+# confidence, and ByteTrack still links them instead of dropping the ID.
+track_low_thresh: 0.10
+
+# Confidence required to spawn a brand-new track. Higher than track_low_thresh
+# so we don't create spurious IDs from noise.
+new_track_thresh: 0.30
+
+# How many frames a lost track is retained before its ID is retired. Larger =
+# longer occlusions / reappearances are tolerated (an object can vanish and
+# come back with the SAME id). At 25 fps, 90 frames ~= 3.6 s. Increase for
+# longer occlusions; decrease to reclaim IDs faster.
+track_buffer: 90
+
+# IoU-based matching threshold for association (1 - IoU distance). The fast
+# ball moves a lot between frames, so we keep this reasonably permissive.
+match_thresh: 0.80
+
+# Fuse detection confidence into the association score for more stable matches.
+fuse_score: true

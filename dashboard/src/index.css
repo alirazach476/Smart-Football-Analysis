@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@theme {
+  /* FIFA World Cup 2026 — black base + trophy gold + vibrant host-nation palette */
+  --color-wc-navy: #000000;
+  --color-wc-deep: #0a0a0a;
+  --color-wc-panel: #141414;
+  --color-wc-border: #2a2a2a;
+  --color-wc-green: #7ed321;
+  --color-wc-green-light: #b8e986;
+  --color-wc-gold: #d4af37;
+  --color-wc-gold-dark: #b8941f;
+  --color-wc-coral: #ff5722;
+  --color-wc-cyan: #2196f3;
+  --color-wc-muted: #a0a0a0;
+  --color-wc-orange: #ff6b00;
+  --color-wc-red: #e53935;
+  --color-wc-blue: #0066ff;
+  --color-wc-purple: #7b2fbe;
+  --color-wc-lime: #a8e10c;
+  --font-sans: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  background: var(--color-wc-navy);
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* WC26 concentric-arc inspired background on pure black */
+.pitch-pattern {
+  background-color: #000;
+  background-image:
+    radial-gradient(ellipse 120% 80% at 50% -30%, rgba(212, 175, 55, 0.08), transparent 50%),
+    radial-gradient(ellipse 60% 40% at 10% 80%, rgba(33, 150, 243, 0.06), transparent 50%),
+    radial-gradient(ellipse 50% 35% at 90% 70%, rgba(255, 107, 0, 0.06), transparent 50%),
+    radial-gradient(ellipse 40% 30% at 50% 100%, rgba(126, 211, 33, 0.05), transparent 50%);
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #f5e6a3 0%, var(--color-wc-gold) 40%, var(--color-wc-gold-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.wc26-gradient {
+  background: linear-gradient(90deg, var(--color-wc-blue), var(--color-wc-lime), var(--color-wc-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-glass {
+  background: rgba(20, 20, 20, 0.85);
+  border: 1px solid var(--color-wc-border);
+  backdrop-filter: blur(16px);
+}
+
+.card-glass:hover {
+  border-color: rgba(212, 175, 55, 0.25);
+}
+
+/* WC26 accent stripe — decorative top border on cards */
+.wc26-stripe {
+  position: relative;
+  overflow: hidden;
+}
+
+.wc26-stripe::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--color-wc-blue),
+    var(--color-wc-lime),
+    var(--color-wc-gold),
+    var(--color-wc-orange),
+    var(--color-wc-red)
+  );
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-wc-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-wc-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-wc-gold-dark);
+}
