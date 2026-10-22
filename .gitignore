@@ -40,3 +40,10 @@ diag_output/
 Thumbs.db
 *.sw?
 *.log
+
+# README gallery
+!media/
+!media/**
+!media/**/*.png
+!media/**/*.mp4
+

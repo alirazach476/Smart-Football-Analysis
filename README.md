@@ -1,9 +1,11 @@
-# Football Object Detection Pipeline
+# Smart Football Analysis
 
 A clean, modular pipeline that runs a trained **YOLOv8** model over a football
 match video to detect **players, goalkeepers, referees, and the ball**. It
 draws colour-coded bounding boxes with labels + confidence, overlays live FPS,
 saves an annotated video, and exports every detection to **JSON** and **CSV**.
+
+**Author:** [Ali Raza Chaudhry](https://github.com/alirazach476)
 
 It also supports **multi-object tracking with ByteTrack** (`--track`): every
 player, referee and the ball is assigned a persistent ID that survives short
@@ -31,6 +33,88 @@ field keypoints to compute a **homography**, projects players and the ball onto
 a top-down pitch, and renders that tactical minimap side by side with (and in
 sync with) the source video, exporting the transformed pitch coordinates. See
 [Bird's-eye view](#birds-eye-view-homography) below.
+
+<p align="center">
+  <a href="#demo-video"><strong>Demo video</strong></a>
+  &nbsp;·&nbsp;
+  <a href="#results-gallery"><strong>Results</strong></a>
+  &nbsp;·&nbsp;
+  <a href="#player--ball-detection">Players</a>
+  &nbsp;·&nbsp;
+  <a href="#pitch--keypoints">Pitch</a>
+  &nbsp;·&nbsp;
+  <a href="#detected-classes">Classes</a>
+</p>
+
+---
+
+<a id="demo-video"></a>
+
+## Demo video
+
+https://github.com/alirazach476/Smart-Football-Analysis/raw/master/media/football.mp4
+
+<video src="media/football.mp4" controls width="100%"></video>
+
+[▶ Download / open `media/football.mp4`](./media/football.mp4)
+
+---
+
+<a id="results-gallery"></a>
+
+## Results gallery
+
+<a id="player--ball-detection"></a>
+
+### Player · ball · referee · goalkeeper detection
+
+<p align="center">
+  <img src="media/players-val-predictions.png" width="100%" alt="Player and ball validation predictions" />
+</p>
+
+<p align="center">
+  <img src="media/players-train-batch.png" width="100%" alt="Players detection training batch" />
+</p>
+
+<p align="center">
+  <img src="media/players-train-batch-2.png" width="100%" alt="Players detection training batch — additional" />
+</p>
+
+<p align="center">
+  <img src="media/players-confusion-matrix.png" width="55%" alt="Players / ball / referee confusion matrix" />
+</p>
+
+<p align="center">
+  <img src="media/players-training-results.png" width="100%" alt="Players model training curves" />
+</p>
+
+<a id="pitch--keypoints"></a>
+
+### Pitch detection & keypoints
+
+<p align="center">
+  <img src="media/pitch-live-detection.png" width="100%" alt="Live pitch detection with keypoints" />
+</p>
+
+<p align="center">
+  <img src="media/pitch-val-predictions.png" width="100%" alt="Pitch keypoint validation predictions" />
+</p>
+
+<p align="center">
+  <img src="media/pitch-train-batch.png" width="100%" alt="Pitch detection training batch" />
+</p>
+
+<p align="center">
+  <img src="media/pitch-confusion-matrix.png" width="45%" alt="Pitch confusion matrix" />
+</p>
+
+<p align="center">
+  <img src="media/pitch-pose-training-results.png" width="100%" alt="Pitch pose model training curves" />
+</p>
+
+---
+
+<a id="detected-classes"></a>
 
 ## Detected classes
 
